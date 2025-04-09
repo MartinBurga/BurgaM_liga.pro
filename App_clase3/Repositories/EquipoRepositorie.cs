@@ -4,6 +4,11 @@ namespace App_clase3.Repositories
 {
     public class EquipoRepositorie
     {
+        public List<Equipo> Equipos;
+        public EquipoRepositorie()
+        {
+            DevuelveListadoEquipos = DevuelveListadoEquipos();
+        }
         public IEnumerable<Equipo> DevuelveListadoEquipos()
         {
             List<Equipo> equipos = new List<Equipo>();
@@ -31,6 +36,32 @@ namespace App_clase3.Repositories
             return equipos;
 
 
+        }
+
+        /* public Equipo DevuelveEquipoPorID(int id)
+        {
+            Equipo equipo = new Equipo
+            {
+                id = 1,
+                nombre = "Liga de Quito",
+                partidosJugados = 10,
+                partidosGanados = 10,
+                partidosEmpatados = 0,
+                partidosPerdidos = 0
+            };
+            return equipo;
+        } */
+
+        public Equipo DevuelveEquipoPorID(int id)
+        {
+            var equipos = DevuelveListadoEquipos();
+            var equipo = equipos.FirstOrDefault(e => e.id == id);
+            return equipo;
+        }
+
+        public bool ActualizarEquipo (int id, Equipo equipo)
+        {
+            return true;
         }
     }
 }
