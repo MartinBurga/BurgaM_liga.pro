@@ -12,6 +12,9 @@
 <table class="table">
     <thead>
         <tr>
+			<th>
+				@Html.DisplayNameFor(model => model.puntaje)
+			</th>
             <th>
                 @Html.DisplayNameFor(model => model.id)
             </th>
@@ -37,6 +40,9 @@
         @foreach (var item in Model)
         {
             <tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.puntaje)
+				</td>   
                 <td>
                     @Html.DisplayFor(modelItem => item.id)
                 </td>
@@ -56,8 +62,9 @@
                     @Html.DisplayFor(modelItem => item.partidosEmpatados)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.id }, new { @class = "btn btn-success"} ) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-dark" } ) |
+                    @Html.ActionLink("Detalles", "Detalles", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }, new { @class = "btn btn-success"} ) 
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-dark" } )
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-danger"})
                 </td>
             </tr>

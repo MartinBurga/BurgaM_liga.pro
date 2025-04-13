@@ -5,15 +5,16 @@ namespace App_clase3.Repositories
     public class EquipoRepositorie
     {
         public List<Equipo> Equipos;
-        public EquipoRepositorie()
+        /*public EquipoRepositorie()
         {
-            DevuelveListadoEquipos = DevuelveListadoEquipos();
-        }
+            EquipoRepositorie() = DevuelveListadoEquipos();
+        }*/
         public IEnumerable<Equipo> DevuelveListadoEquipos()
         {
             List<Equipo> equipos = new List<Equipo>();
             Equipo ldu = new Equipo
             {
+                puntaje = 0,
                 id = 1,
                 nombre = "Liga de Quito",
                 partidosJugados = 10,
@@ -25,13 +26,15 @@ namespace App_clase3.Repositories
 
             Equipo Barcelona = new Equipo
             {
+                puntaje = 0,
                 id = 2,
                 nombre = "Barcelona",
                 partidosJugados = 10,
                 partidosGanados = 8,
                 partidosEmpatados = 1,
-                partidosPerdidos = 1///gola munod
+                partidosPerdidos = 1
             };
+            calcularPuntaje();
             equipos.Add(Barcelona);
             return equipos;
 
@@ -59,9 +62,18 @@ namespace App_clase3.Repositories
             return equipo;
         }
 
-        public bool ActualizarEquipo (int id, Equipo equipo)
+        public void calcularPuntaje()
+        {
+            foreach (var item in Equipos)
+            {
+                item.puntaje = (item.partidosGanados * 3) + (item.partidosEmpatados * 1);
+            }
+        }
+
+        public bool ActualizarEquipo(int id, Equipo equipo)
         {
             return true;
         }
+
     }
 }

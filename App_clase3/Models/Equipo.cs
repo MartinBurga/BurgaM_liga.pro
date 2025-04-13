@@ -12,6 +12,7 @@ namespace App_clase3.Models
         [DisplayName("Nombre del equipo")]
         public string nombre { get; set; }
         [Range(0, 100)]
+        public int puntaje { get; set; }
         public int partidosJugados { get; set; }
         public int partidosGanados { get; set; }
         public int partidosPerdidos { get; set; }

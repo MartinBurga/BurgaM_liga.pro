@@ -10,7 +10,7 @@ namespace App_clase3.Controllers
         public EquipoRepositorie _repository;
         public EquipoController()
         {
-            _re = new EquipoRepositorie();
+            _repository = new EquipoRepositorie();
         }
 
         public ActionResult List()
