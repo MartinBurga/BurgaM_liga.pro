@@ -4,10 +4,13 @@ namespace App_clase3.Repositories
 {
     public class EquipoRepositorie
     {
-        public List<Equipo> Equipos;
+        public static List<Equipo> Equipos = new List<Equipo>();
         public EquipoRepositorie()
         {
-            Equipos = DevuelveListadoEquipos().ToList();
+            if (!Equipos.Any())
+            {
+                Equipos = DevuelveListadoEquipos().ToList();
+            }
         }
         public IEnumerable<Equipo> DevuelveListadoEquipos()
         {
@@ -222,7 +225,6 @@ namespace App_clase3.Repositories
             equipoActual.partidosJugados = equipo.partidosJugados;
             equipoActual.partidosGanados = equipo.partidosGanados;
             equipoActual.partidosPerdidos = equipo.partidosPerdidos;
-            equipoActual.partidosJugados = equipo.partidosJugados;
 
             calcularPuntaje(equipoActual);
 
