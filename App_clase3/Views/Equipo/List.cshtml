@@ -13,7 +13,7 @@
     <thead>
         <tr>
 			<th>
-				@Html.DisplayNameFor(model => model.puntaje)
+				@Html.DisplayNameFor(model => model.pnts)
 			</th>
             <th>
                 @Html.DisplayNameFor(model => model.id)
@@ -41,7 +41,7 @@
         {
             <tr>
 				<td>
-					@Html.DisplayFor(modelItem => item.puntaje)
+					@Html.DisplayFor(modelItem => item.pnts)
 				</td>   
                 <td>
                     @Html.DisplayFor(modelItem => item.id)
@@ -62,7 +62,6 @@
                     @Html.DisplayFor(modelItem => item.partidosEmpatados)
                 </td>
                 <td>
-                    @Html.ActionLink("Detalles", "Detalles", new { /* id=item.PrimaryKey */ })
                     @Html.ActionLink("Edit", "Edit", new { id=item.id }, new { @class = "btn btn-success"} ) 
                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-dark" } )
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-danger"})

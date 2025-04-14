@@ -13,6 +13,7 @@ namespace App_clase3.Controllers
             _repository = new EquipoRepositorie();
         }
 
+
         public ActionResult List()
         {
             var equipos = _repository.DevuelveListadoEquipos();
@@ -65,6 +66,14 @@ namespace App_clase3.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult Details(int id)
+        {
+            var equipo = _repository.DevuelveEquipoPorID(id);
+            return View(equipo);
+        }
+
 
 
     }

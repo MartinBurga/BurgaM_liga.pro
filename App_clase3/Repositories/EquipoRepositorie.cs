@@ -14,7 +14,7 @@ namespace App_clase3.Repositories
             List<Equipo> equipos = new List<Equipo>();
             Equipo ldu = new Equipo
             {
-                puntaje = 0,
+                descripcion = "campeon de libertadores, sudamericana y recopa",
                 id = 1,
                 nombre = "Liga de Quito",
                 partidosJugados = 10,
@@ -22,11 +22,13 @@ namespace App_clase3.Repositories
                 partidosEmpatados = 0,
                 partidosPerdidos = 0
             };
+            calcularPuntaje(ldu);
             equipos.Add(ldu);
 
             Equipo Barcelona = new Equipo
             {
-                puntaje = 0,
+
+                descripcion = "Idolo del Ecuador",
                 id = 2,
                 nombre = "Barcelona",
                 partidosJugados = 10,
@@ -34,7 +36,7 @@ namespace App_clase3.Repositories
                 partidosEmpatados = 1,
                 partidosPerdidos = 1
             };
-            calcularPuntaje();
+            calcularPuntaje(Barcelona);
             equipos.Add(Barcelona);
             return equipos;
 
@@ -62,17 +64,17 @@ namespace App_clase3.Repositories
             return equipo;
         }
 
-        public void calcularPuntaje()
-        {
-            foreach (var item in Equipos)
-            {
-                item.puntaje = (item.partidosGanados * 3) + (item.partidosEmpatados * 1);
-            }
-        }
+
 
         public bool ActualizarEquipo(int id, Equipo equipo)
         {
             return true;
+        }
+
+        public int calcularPuntaje(Equipo equipo)
+        {
+
+            return (equipo.partidosGanados * 3) + equipo.partidosEmpatados;
         }
 
     }
