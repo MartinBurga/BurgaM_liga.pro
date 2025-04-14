@@ -5,10 +5,10 @@ namespace App_clase3.Repositories
     public class EquipoRepositorie
     {
         public List<Equipo> Equipos;
-        /*public EquipoRepositorie()
+        public EquipoRepositorie()
         {
-            EquipoRepositorie() = DevuelveListadoEquipos();
-        }*/
+            Equipos = DevuelveListadoEquipos().ToList();
+        }
         public IEnumerable<Equipo> DevuelveListadoEquipos()
         {
             List<Equipo> equipos = new List<Equipo>();
@@ -68,6 +68,20 @@ namespace App_clase3.Repositories
 
         public bool ActualizarEquipo(int id, Equipo equipo)
         {
+            var equipoActual = Equipos.FirstOrDefault(e => e.id == id);
+            if (equipoActual == null)
+            {
+                return false; 
+            }
+            equipoActual.nombre = equipo.nombre;
+            equipoActual.descripcion = equipo.descripcion;
+            equipoActual.partidosJugados = equipo.partidosJugados;
+            equipoActual.partidosGanados = equipo.partidosGanados;
+            equipoActual.partidosPerdidos = equipo.partidosPerdidos;
+            equipoActual.partidosJugados = equipo.partidosJugados;
+
+            calcularPuntaje(equipoActual);
+
             return true;
         }
 

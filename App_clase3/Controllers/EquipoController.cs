@@ -17,7 +17,7 @@ namespace App_clase3.Controllers
         public ActionResult List()
         {
             var equipos = _repository.DevuelveListadoEquipos();
-            equipos = equipos.OrderBy(item => item.partidosGanados);
+            //equipos = equipos.OrderBy(item => item.partidosGanados);
             //equipos = equipos.Where(item => item.nombre == "Liga de Quito");
             return View(equipos);
 
@@ -54,17 +54,20 @@ namespace App_clase3.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Equipo equipo)
         {
-            //Proceso de guardar la informacion
-            try
+            if (!ModelState.IsValid)
             {
-                EquipoRepositorie repository = new EquipoRepositorie();
-                repository.ActualizarEquipo(id, equipo);
-                return RedirectToAction(nameof(List));
+                return View(equipo);
             }
-            catch
+
+            var repositorio = new EquipoRepositorie();
+            var actualizar = repositorio.ActualizarEquipo(id, equipo);
+
+            if (!actualizar)
             {
-                return View();
+                return NotFound();
             }
+
+            return RedirectToAction("List");
         }
 
 
